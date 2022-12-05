@@ -1,6 +1,13 @@
 import Chart from 'react-apexcharts'
+import { useGlobalStore } from '../store'
 
 export const HelloWorld = () => {
+  // Example how to use the global zustand store
+  const { powerBiData } = useGlobalStore((state) => state)
+
+  // View data from Power BI in the console
+  console.log('powerBiData', powerBiData)
+
   const chartData = {
     options: {
       chart: {
@@ -17,6 +24,7 @@ export const HelloWorld = () => {
       },
     ],
   }
+
   return (
     <div>
       <h1>Hello Mate!</h1>

@@ -37,7 +37,7 @@ import { VisualFormattingSettingsModel } from './settings'
 
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { HelloWorld } from './components/HelloWorld'
+import { App } from './App'
 
 export class Visual implements IVisual {
   private target: HTMLElement
@@ -46,13 +46,17 @@ export class Visual implements IVisual {
   private reactRoot: React.ReactElement
 
   constructor(options: VisualConstructorOptions) {
-    this.reactRoot = React.createElement(HelloWorld, {})
     this.target = options.element
-
-    ReactDOM.render(this.reactRoot, this.target)
+    this.update()
   }
 
-  public update(options: VisualUpdateOptions) {}
+  public update(options?: VisualUpdateOptions) {
+    const props = options && options.dataViews[0] ? options.dataViews[0] : null
+    ReactDOM.render(
+      React.createElement(App, { powerBiData: props }),
+      this.target
+    )
+  }
 
   /**
    * Returns properties pane formatting model content hierarchies, properties and latest formatting values, Then populate properties pane.

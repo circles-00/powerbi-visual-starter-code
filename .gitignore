@@ -5,3 +5,4 @@ yarn-error.log
 .vscode
 dist
 .tmp
+webpack.statistics.dev.html

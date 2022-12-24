@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { FC, useEffect } from 'react'
 import create from 'zustand'
 import { HelloWorld } from './components/HelloWorld'
 import { useGlobalStore } from './store'
@@ -8,7 +8,7 @@ interface IAppProps {
 }
 
 // This is the main App component, which is the root of our React app.
-export const App = ({ powerBiData }) => {
+export const App: FC<IAppProps> = ({ powerBiData }) => {
   const { setPowerBiData } = useGlobalStore((state) => state)
 
   useEffect(() => {
